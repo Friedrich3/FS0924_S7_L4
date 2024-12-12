@@ -14,7 +14,7 @@
       integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN"
       crossorigin="anonymous"
     />
-    
+
     <style>
       .jumbotron {
         padding-top: 3rem;
@@ -71,7 +71,7 @@
         }
       }
     </style>
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/style.css" />
   </head>
   <body>
     <header>
@@ -101,7 +101,8 @@
               stroke="currentColor"
               stroke-linecap="round"
               stroke-linejoin="round"
-              stroke-width="2" id=""
+              stroke-width="2"
+              id=""
               aria-hidden="true"
               class="me-2"
               viewBox="0 0 24 24"
@@ -137,15 +138,41 @@
             them in a cool way!
           </p>
           <p>
-            <button type="button" class="btn btn-primary my-2" id="loadImages">Load Images</button>
-            <button type="button" class="btn btn-secondary my-2" id="loadSecondary">Load Secondary Images</button>
+            <button type="button" class="btn btn-primary my-2" id="loadImages">
+              Load Images
+            </button>
+            <button
+              type="button"
+              class="btn btn-secondary my-2"
+              id="loadSecondary"
+            >
+              Load Secondary Images
+            </button>
           </p>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div>
+                <input
+                  type="text"
+                  class="input-group my-2 py-1 rounded-2 border-secondary border"
+                  id="searchText"
+                  placeholder="Cerca..."
+                /><button
+                  type="button"
+                  class="btn btn-outline-primary"
+                  id="searchButton"
+                >
+                  SEARCH
+                </button>
+              <p id="searchError" class="displayed text-danger">Devi inserire</p>
+            </div>
+          </div>
         </div>
       </section>
       <div class="album py-5 bg-light">
         <div class="container">
           <div class="row">
-
             <div class="col-md-4" id="card0">
               <div class="card mb-4 shadow-sm">
                 <img
@@ -181,7 +208,7 @@
                 </div>
               </div>
             </div>
-            
+
             <div class="col-md-4" id="card1">
               <div class="card mb-4 shadow-sm">
                 <img

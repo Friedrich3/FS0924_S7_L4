@@ -5,9 +5,12 @@ const dinamicUrl = "https://api.pexels.com/v1/curated";  //VA UNITA AD UNA QUERY
 
 let btnLoadImages = document.getElementById("loadImages");
 let btnLoadSecondary = document.getElementById("loadSecondary");
+let btnSearch = document.getElementById("searchButton");
+
 
 let arrLoadImages = [];
 let arrLoadSecondary = [];
+let arrSearch = [];
 
 const nCard = 9; //numero di carte a video 
 
@@ -57,7 +60,38 @@ function loadImgOnClick() {
             console.log("ERRORE: " + error);
         }
     });
+
+    btnSearch.addEventListener("click", async function () {
+        let searchText = document.getElementById("searchText");
+        let searchError = document.getElementById("searchError");
+        if(searchText.value){
+            try {
+            let response = await fetch(`${photoUrl}?query=${searchText.value}`, {
+                method: "GET",
+                headers: {
+                    "Authorization": authKey,
+                }
+            }
+            );
+            let data = await response.json();
+            arrSearch = data.photos;
+            printCards(arrSearch);
+            console.log(arrSearch);
+        }
+        catch (error) {
+            console.log("ERRORE: " + error);
+        }
+        }else{
+            searchError.innerText= "Devi inserire almeno una chiave di ricerca";
+            searchError.classList.toggle("displayed");
+        }
+        
+    });
+
 };
+
+
+
 
 function printCards(arrayFornito){
     for(let i = 0 ; i < nCard; i++){
