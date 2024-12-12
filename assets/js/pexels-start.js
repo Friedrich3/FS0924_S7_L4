@@ -62,7 +62,19 @@ function loadImgOnClick() {
 function printCards(arrayFornito){
     for(let i = 0 ; i < nCard; i++){
         let img = document.querySelector(`#card${i} img`);
+        let btnHide = document.querySelector(`#card${i} button:last-child`);
+        let small = document.querySelector(`#card${i} small`);
+
         img.setAttribute("src", arrayFornito[i].src.tiny);
-        
+        btnHide.innerText = "Hide";
+        btnHide.setAttribute("onclick", `deleteItem(${i})`);
+        small.innerText = arrayFornito[i].id;
+
+    
     }
+};
+
+function deleteItem(id){
+    let toDelete = document.getElementById("card"+id);
+    toDelete.remove();
 };
