@@ -22,7 +22,7 @@ function init() {
 function loadImgOnClick() {
     btnLoadImages.addEventListener("click", async function () {
         try {
-            let response = await fetch(`${photoUrl}?query=sunset`, {
+            let response = await fetch(`${photoUrl}?query=mountain`, {
                 method: "GET",
                 headers: {
                     "Authorization": authKey,
@@ -30,9 +30,9 @@ function loadImgOnClick() {
             }
             );
             let data = await response.json();
-            arrLoadImages = data;
-            printCards();
-            //console.log(arrLoadImages);
+            arrLoadImages = data.photos;
+            printCards(arrLoadImages);
+            console.log(arrLoadImages);
         }
         catch (error) {
             console.log("ERRORE: " + error);
@@ -41,7 +41,7 @@ function loadImgOnClick() {
 
     btnLoadSecondary.addEventListener("click", async function () {
         try {
-            let response = await fetch(`${photoUrl}?query=cherry-blossom`, {
+            let response = await fetch(`${photoUrl}?query=car`, {
                 method: "GET",
                 headers: {
                     "Authorization": authKey,
@@ -49,8 +49,8 @@ function loadImgOnClick() {
             }
             );
             let data = await response.json();
-            arrLoadSecondary = data;
-            printCards();
+            arrLoadSecondary = data.photos;
+            printCards(arrLoadSecondary);
             //console.log(arrLoadSecondary);
         }
         catch (error) {
@@ -59,8 +59,10 @@ function loadImgOnClick() {
     });
 };
 
-function printCards(){
+function printCards(arrayFornito){
     for(let i = 0 ; i < nCard; i++){
+        let img = document.querySelector(`#card${i} img`);
+        img.setAttribute("src", arrayFornito[i].src.tiny);
         
     }
 };
